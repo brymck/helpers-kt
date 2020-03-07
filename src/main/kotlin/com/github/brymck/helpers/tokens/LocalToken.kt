@@ -1,4 +1,4 @@
-package com.github.brymck.helpers
+package com.github.brymck.helpers.tokens
 
 import io.grpc.CallCredentials
 import io.grpc.Metadata
@@ -6,7 +6,7 @@ import io.grpc.Metadata.ASCII_STRING_MARSHALLER
 import io.grpc.Status.UNAUTHENTICATED
 import java.util.concurrent.Executor
 
-internal class Token : CallCredentials() {
+internal class LocalToken : CallCredentials() {
     companion object {
         private val authorization = Metadata.Key.of("Authorization", ASCII_STRING_MARSHALLER)
     }
