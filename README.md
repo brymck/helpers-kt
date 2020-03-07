@@ -2,6 +2,7 @@ helpers
 =======
 
 [![CircleCI](https://circleci.com/gh/brymck/helpers-kt.svg?style=shield)](https://circleci.com/gh/brymck/helpers-kt)
+[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
 This Kotlin library provides helpful classes and functions for use with my cloud projects.
 
