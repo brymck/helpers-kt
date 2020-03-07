@@ -1,6 +1,8 @@
 helpers
 =======
 
+[![CircleCI](https://circleci.com/gh/brymck/helpers-kt.svg?style=shield)](https://circleci.com/gh/brymck/helpers-kt)
+
 This Kotlin library provides helpful classes and functions for use with my cloud projects.
 
 Usage
