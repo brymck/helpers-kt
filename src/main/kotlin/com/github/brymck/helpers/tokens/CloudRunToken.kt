@@ -7,11 +7,12 @@ import io.grpc.Status.UNAUTHENTICATED
 import java.time.Instant
 import java.util.concurrent.Executor
 import java.util.concurrent.TimeUnit.MILLISECONDS
+import mu.KLogging
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
 internal class CloudRunToken(host: String) : CallCredentials() {
-    companion object {
+    companion object : KLogging() {
         private val authorization = Metadata.Key.of("Authorization", Metadata.ASCII_STRING_MARSHALLER)
         private const val METADATA_HOST = "http://metadata.google.internal"
         private const val IDENTITY_PATH = "$METADATA_HOST/instance/service-accounts/default/identity"
@@ -37,13 +38,16 @@ internal class CloudRunToken(host: String) : CallCredentials() {
                 .addHeader("Metadata-Flavor", "Google")
                 .get()
                 .build()
+            logger.debug { "requesting new token from $tokenUrl" }
             val body = ok.newCall(request).execute().body
             if (body == null) {
                 applier.fail(UNAUTHENTICATED.withDescription("no body received when requesting token from metadata"))
                 return
             }
             token = body.string()
+            logger.debug { "received a new token: ${token.take(8)}..." }
             renewAt = JWT.decode(token).expiresAt.toInstant().plusSeconds(30)
+            logger.debug { "new token expires at $renewAt" }
         }
         if (token == "") {
             applier.fail(UNAUTHENTICATED.withDescription("token is empty"))

@@ -7,10 +7,17 @@ import io.grpc.Channel
 import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder
 import io.grpc.stub.AbstractStub
+import mu.KLogging
 
 class BrymckApi<T : AbstractStub<T>>(name: String, val stubber: (Channel) -> T) {
-    companion object {
-        private val isOnCloudRun = (System.getenv("K_SERVICE") != null)
+    companion object : KLogging() {
+        private val isOnCloudRun = if (System.getenv("K_SERVICE") == null) {
+            logger.debug { "assuming no Cloud Run environment because environment variable K_SERVICE is not set" }
+            false
+        } else {
+            logger.debug { "assuming Cloud Run environment because environment variable K_SERVICE is set" }
+            true
+        }
         private const val HTTPS_PORT = 443
     }
 
@@ -24,6 +31,7 @@ class BrymckApi<T : AbstractStub<T>>(name: String, val stubber: (Channel) -> T) 
             .forAddress(host, HTTPS_PORT)
             .useTransportSecurity()
             .build()
+        logger.debug { "opened channel to $host" }
         credentials = if (isOnCloudRun) CloudRunToken(host) else LocalToken()
     }
 
