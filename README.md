@@ -50,7 +50,7 @@ and then it could be used in a Spring Boot service as
 
 ```kotlin
 @Service
-class NameService(securitiesApi: BrymckService<SecuritiesAPIBlockingStub>) {
+class NameService(securitiesApi: BrymckApi<SecuritiesAPIBlockingStub>) {
     // ...
     fun getSecurityName(id: Long): String {
         val request = GetSecurityRequest.newBuilder().setId(1).build()
