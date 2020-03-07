@@ -47,7 +47,6 @@
     </profiles>
     <activeProfiles>
         <activeProfile>jcenter</activeProfile>
-        <activeProfile>ossrh</activeProfile>
     </activeProfiles>
 </settings>
 
