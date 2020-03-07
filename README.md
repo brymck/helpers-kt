@@ -15,7 +15,7 @@ Include this in your POM:
 <dependency>
     <groupId>com.github.brymck</groupId>
     <artifactId>helpers</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
 </dependency>
 ```
 
