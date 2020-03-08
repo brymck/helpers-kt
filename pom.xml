@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.brymck</groupId>
     <artifactId>helpers</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6-SNAPSHOT</version>
     <name>helpers</name>
     <description>Helpers for my cloud projects</description>
     <url>https://github.com/brymck/helpers</url>
