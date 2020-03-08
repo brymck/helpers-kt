@@ -1,4 +1,4 @@
-package com.github.brymck.helpers.tokens
+package com.github.brymck.helpers.auth
 
 import com.auth0.jwt.JWT
 import io.grpc.CallCredentials
@@ -11,7 +11,7 @@ import mu.KLogging
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
-internal class CloudRunToken(host: String) : CallCredentials() {
+internal class CloudRunTokenAuth(host: String) : CallCredentials() {
     companion object : KLogging() {
         private val authorization = Metadata.Key.of("Authorization", Metadata.ASCII_STRING_MARSHALLER)
         private const val METADATA_HOST = "http://metadata.google.internal"

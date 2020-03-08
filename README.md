@@ -31,6 +31,10 @@ Firstly, you would add a dependency on `brymck-securities` in your POM:
 </dependency>
 ```
 
+If the service is already running in the `brymck.io` Google Cloud project, no authorization configuration is needed;
+this library will handle requesting tokens from the Google Cloud Platform metadata server. If running locally, you will
+need to set the environment variable `BRYMCK_IO_API_KEY` to a valid API key.
+
 Then, in the app's initialization, you would create a `BrymckApi` containing the name of the service and how a "stub"
 (a.k.a. a client) should be instantiated. When `BrymckApi` is created, it opens a long-lived channel, while stubs can
 be created on demand. For instance, the below could be in a Spring Boot configuration:
