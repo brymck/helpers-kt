@@ -13,7 +13,7 @@
         <!-- Dependency versions -->
         <annotations.version>15.0</annotations.version>
         <dokka.version>0.9.18</dokka.version>
-        <grpc.version>1.26.0</grpc.version>
+        <grpc.version>1.53.0</grpc.version>
         <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
         <java-jwt.version>3.10.0</java-jwt.version>
         <junit.version>5.5.2</junit.version>
